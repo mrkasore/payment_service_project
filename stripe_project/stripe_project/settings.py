@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-	os.getenv("YOUR_DOMAIN"),
+	os.getenv("IP_SITE"),
     '127.0.0.1'
 ]
 
