@@ -1,0 +1,20 @@
+{% extends "stripe_app/layout.html" %}
+
+{% block body %}
+    <div class="container" style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+        <h1>Создать заказ</h1>
+        <form method="post" action="{% url 'create_order' %}">
+            {% csrf_token %}
+            {% for item in items %}
+                <div style="margin-bottom: 10px">
+                    <input type="checkbox" name="items" value="{{ item.id }}">
+                    <label>{{ item.name }} - {{ item.price }} руб. {{ item.get_currency_display }}</label>
+                    <div>{{ item.description }}</div>
+                </div>
+            {% endfor %}
+            <button type="submit" data-stripe-key="{{ stripe_public_key }}" data-csrf-token="{{ csrf_token }}">
+                Создать заказ
+            </button>
+        </form>
+    </div>
+{% endblock %}

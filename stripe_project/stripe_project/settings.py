@@ -133,5 +133,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8080',  # Добавьте ваш домен или IP
+    f"{os.getenv("YOUR_DOMAIN")}:8080",
 ]

@@ -1,13 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var buyButton = document.getElementById('buy-button');
-    var stripePublicKey = buyButton.getAttribute('data-stripe-key');
-    var itemId = buyButton.getAttribute('data-item-id');
-    var csrftoken = buyButton.getAttribute('data-csrf-token');
-    var stripe = Stripe(stripePublicKey);
+    let buyButton = document.getElementById('buy-button');
+    let stripePublicKey = buyButton.getAttribute('data-stripe-key');
+    let itemId = buyButton.getAttribute('data-item-id');
+    let csrftoken = buyButton.getAttribute('data-csrf-token');
+    let stripe = Stripe(stripePublicKey);
 
     if (buyButton) {
+        let url = '';
+        if(buyButton.classList.contains('buy-orders')) {
+            url = '/buy_order/' + itemId + '/';
+        } else {
+            url = '/buy/' + itemId + '/';
+        }
         buyButton.addEventListener('click', function() {
-            fetch('/buy/' + itemId + '/', {
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
