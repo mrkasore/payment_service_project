@@ -30,7 +30,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-	'109.172.6.59'
+	os.getenv("YOUR_DOMAIN"),
+    '127.0.0.1'
 ]
 
 
@@ -135,5 +136,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    f"{os.getenv("YOUR_DOMAIN")}:8080",
+    os.getenv("YOUR_DOMAIN"),
 ]
